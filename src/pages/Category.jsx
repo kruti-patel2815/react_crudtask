@@ -23,8 +23,13 @@ const Category = () => {
   const [list, setList] = useState(data);
 
   const myfunction = (category) => {
-    const filDs = data.filter((item) => item.category == category);
-    setList(filDs);
+    if (category == "all") {
+      setList(data);
+    } else {
+      const filDs = data.filter((item) => item.category == category);
+      setList(filDs);
+    }
+   
   };
   return (
     <>
