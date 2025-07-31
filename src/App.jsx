@@ -4,16 +4,20 @@ import "./App.css";
 // import Category from "./pages/Category";
  import Rickmorty from "./pages/Rickmorty";
 // import Tictactoe from "./pages/Tictactoe";
-import Useformik from "./pages/Useformik";
+// import Useformik from "./pages/Useformik";
+// import Practice2 from "./pages/Practice2";
+import Resultinformik from "./pages/Resultinformik";
 function App() {
   return (
     <>
       {/* <Crud></Crud> */}
-     <Rickmorty></Rickmorty>
+      <Rickmorty></Rickmorty> 
       {/* <Result2></Result2> */}
       {/* <Category></Category> */}
       {/* <Tictactoe></Tictactoe> */}
       {/* <Useformik></Useformik> */}
+      {/* <Practice2></Practice2> */}
+      {/* <Resultinformik></Resultinformik> */}
     </>
   );
 }
