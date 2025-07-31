@@ -16,7 +16,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AppBar from "@mui/material/AppBar";
 import logo from "../img/b6740400-92d4-11ea-8a13-d5f6e0558e9b.png";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 
 const Rickmorty = () => {
   const data = [
@@ -63,7 +63,7 @@ const Rickmorty = () => {
       seen: " Forgetting Sarick Mortshall",
     },
   ];
-  const pages = ["Docs","About"]
+  const pages = ["Docs", "About"];
   return (
     <div>
       {/* header section start */}
@@ -73,7 +73,7 @@ const Rickmorty = () => {
         </Box>
         <Box className="navbar">
           {pages.map((page) => (
-            <Typography className='pages'>{page}</Typography>
+            <Typography className="pages">{page}</Typography>
           ))}
           <button>SUPPORT US</button>
         </Box>
@@ -86,18 +86,18 @@ const Rickmorty = () => {
             <Grid size={6}>
               <Box className="box">
                 <Grid container spacing={2}>
-                  <Grid size={6}>
+                  <Grid>
                     <img
                       src={i.img}
                       style={{
                         width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
+                        // height: "auto",
+                        // objectFit: "cover",
                       }}
                       alt={i.name}
                     />
                   </Grid>
-                  <Grid size={6}>
+                  <Grid>
                     <Box className="right">
                       <Box sx={{ display: "flex", flexDirection: "column" }}>
                         <Link
