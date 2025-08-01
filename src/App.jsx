@@ -6,7 +6,8 @@ import "./App.css";
 // import Tictactoe from "./pages/Tictactoe";
 // import Useformik from "./pages/Useformik";
 // import Practice2 from "./pages/Practice2";
-import Resultformik from "./pages/Resultformik";
+// import Resultformik from "./pages/Resultformik";
+import Formiktag from "./pages/Formiktag";
 function App() {
   return (
     <>
@@ -17,7 +18,8 @@ function App() {
       {/* <Tictactoe></Tictactoe> */}
       {/* <Useformik></Useformik> */}
       {/* <Practice2></Practice2> */}
-      <Resultformik></Resultformik>
+      {/* <Resultformik></Resultformik> */}
+      <Formiktag></Formiktag>
     </>
   );
 }
