@@ -7,7 +7,9 @@ import "./App.css";
 // import Useformik from "./pages/Useformik";
 // import Practice2 from "./pages/Practice2";
 // import Resultformik from "./pages/Resultformik";
-import Formiktag from "./pages/Formiktag";
+// import Formiktag from "./pages/Formiktag";
+// import Api from "./pages/Api";
+import Rickandmortyapi from "./pages/Rickandmortyapi";
 function App() {
   return (
     <>
@@ -19,7 +21,9 @@ function App() {
       {/* <Useformik></Useformik> */}
       {/* <Practice2></Practice2> */}
       {/* <Resultformik></Resultformik> */}
-      <Formiktag></Formiktag>
+      {/* <Formiktag></Formiktag> */}
+      {/* <Api></Api> */}
+      <Rickandmortyapi></Rickandmortyapi>
     </>
   );
 }
