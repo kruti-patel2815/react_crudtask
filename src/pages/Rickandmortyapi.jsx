@@ -28,7 +28,7 @@ const Rickandmortyapi = () => {
           axios.get("https://rickandmortyapi.com/api/episode"),
         ]);
 
-        // Fetch episode names for first episodes of each character
+       
         const characterList = charRes.data.results;
         const episodeUrls = characterList.map((char) => char.episode[0]);
         const uniqueEpisodeUrls = [...new Set(episodeUrls)];
