@@ -10,7 +10,9 @@ import "./App.css";
 // import Formiktag from "./pages/Formiktag";
 // import Api from "./pages/Api";
 // import Rickandmortyapi from "./pages/Rickandmortyapi";
-import Apipostman from "./pages/Apipostman";
+// import Apipostman from "./pages/Apipostman";
+import Resultapi from "./pages/Resultapi";
+// import Crudapipractice from "./pages/Crudapipractice";
 function App() {
   return (
     <>
@@ -25,7 +27,9 @@ function App() {
       {/* <Formiktag></Formiktag> */}
       {/* <Api></Api> */}
       {/* <Rickandmortyapi></Rickandmortyapi> */}
-      <Apipostman></Apipostman>
+      {/* <Apipostman></Apipostman> */}
+      <Resultapi></Resultapi>
+      {/* <Crudapipractice></Crudapipractice> */}
     </>
   );
 }
