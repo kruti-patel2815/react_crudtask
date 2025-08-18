@@ -53,8 +53,10 @@ const Resultapi = () => {
           viewData();
           setIni({
             name: "",
-            surname: "",
-          });
+            sub1: "",
+            sub2: "",
+            sub3: ""
+         });
           setEditId(null);
         })
         .catch((error) => {
@@ -105,7 +107,7 @@ const Resultapi = () => {
     let duplicatelist = [...list];
 
     var st = duplicatelist.filter(
-      (item) => item.name === searchItem || item.surname === searchItem
+      (item) => item.name === searchItem || item.sub1 === searchItem || item.sub2 === searchItem || item.sub3 === searchItem
     );
     setSearchItem("");
     setList(st);
@@ -175,6 +177,9 @@ const Resultapi = () => {
           <td>Percentage</td>
           <td>Min</td>
           <td>Max</td>
+          <td>Delete</td>
+          <td>Edit</td>
+
         </tr>
 
         {list.map((item, index) => (

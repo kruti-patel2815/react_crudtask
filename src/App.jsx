@@ -11,8 +11,11 @@ import "./App.css";
 // import Api from "./pages/Api";
 // import Rickandmortyapi from "./pages/Rickandmortyapi";
 // import Apipostman from "./pages/Apipostman";
-import Resultapi from "./pages/Resultapi";
+// import Resultapi from "./pages/Resultapi";
 // import Crudapipractice from "./pages/Crudapipractice";
+// import Useref from "./pages/Hooks/Useref";
+// import Usememo from "./pages/Hooks/Usememo";
+import Usecallback from "./pages/Hooks/Usecallback";
 function App() {
   return (
     <>
@@ -28,8 +31,11 @@ function App() {
       {/* <Api></Api> */}
       {/* <Rickandmortyapi></Rickandmortyapi> */}
       {/* <Apipostman></Apipostman> */}
-      <Resultapi></Resultapi>
+      {/* <Resultapi></Resultapi> */}
       {/* <Crudapipractice></Crudapipractice> */}
+      {/* <Useref></Useref> */}
+      {/* <Usememo></Usememo> */}
+      <Usecallback></Usecallback>
     </>
   );
 }
