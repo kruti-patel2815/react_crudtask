@@ -14,8 +14,13 @@ import "./App.css";
 // import Resultapi from "./pages/Resultapi";
 // import Crudapipractice from "./pages/Crudapipractice";
 // import Useref from "./pages/Hooks/Useref";
-// import Usememo from "./pages/Hooks/Usememo";
-import Usecallback from "./pages/Hooks/Usecallback";
+//  import Usememo from "./pages/Hooks/Usememo";
+//import Usecallback from "./pages/Hooks/Usecallback";
+// import Usecontext from "./pages/Hooks/Usecontext";
+// import Usecontexttask1 from "./pages/Hooks/Usecontexttask1";
+import Usecontexttask2 from "./pages/Hooks/Usecontexttask2";
+
+
 function App() {
   return (
     <>
@@ -35,8 +40,10 @@ function App() {
       {/* <Crudapipractice></Crudapipractice> */}
       {/* <Useref></Useref> */}
       {/* <Usememo></Usememo> */}
-      <Usecallback></Usecallback>
-      <Usecallback></Usecallback>
+      {/* <Usecallback></Usecallback> */}
+      {/* <Usecontext></Usecontext> */}
+      {/* <Usecontexttask1></Usecontexttask1> */}
+      <Usecontexttask2></Usecontexttask2>
     </>
   );
 }
