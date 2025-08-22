@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Resultapi = () => {
   const token = "XjFAg7Jz1EoAStIL";
 
   const [list, setList] = useState([]);
-
   const [ini, setIni] = useState({
     name: "",
     sub1: "",
@@ -17,7 +15,6 @@ const Resultapi = () => {
 
   const [editId, setEditId] = useState(null);
   const [searchItem, setSearchItem] = useState("");
-  const [filterItem, setFilterItem] = useState([]);
 
   useEffect(() => {
     viewData();
@@ -26,73 +23,60 @@ const Resultapi = () => {
   function viewData() {
     axios
       .get("https://generateapi.onrender.com/api/Result", {
-        headers: {
-          Authorization: token,
-        },
+        headers: { Authorization: token },
       })
       .then((res) => {
         setList(res.data.Data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Fetch error:", error);
       });
   }
 
   const handleSubmit = (values, { resetForm }) => {
-    if (editId != null) {
+    if (editId !== null) {
       const { _id, ...rest } = values;
       axios
         .patch(`https://generateapi.onrender.com/api/Result/${editId}`, rest, {
-          headers: {
-            Authorization: token,
-          },
+          headers: { Authorization: token },
         })
-        .then((res) => {
-          console.log("data edited");
-
+        .then(() => {
+          console.log("Data edited");
           viewData();
-          setIni({
-            name: "",
-            sub1: "",
-            sub2: "",
-            sub3: ""
-         });
+          resetForm();
           setEditId(null);
+          setIni({ name: "", sub1: "", sub2: "", sub3: "" });
         })
         .catch((error) => {
-          console.log(error);
+          console.error("Edit error:", error);
         });
     } else {
       axios
         .post("https://generateapi.onrender.com/api/Result", values, {
-          headers: {
-            Authorization: token,
-          },
+          headers: { Authorization: token },
         })
-        .then((res) => {
-          console.log("data added");
+        .then(() => {
+          console.log("Data added");
           resetForm();
           viewData();
         })
         .catch((error) => {
-          console.log(error);
+          console.error("Submit error:", error);
         });
     }
   };
 
-  const deleteData = (deleteId) => {
+  const deleteData = (id) => {
     axios
-      .delete(`https://generateapi.onrender.com/api/Result/${deleteId}`, {
-        headers: {
-          Authorization: token,
-        },
+      .delete(`https://generateapi.onrender.com/api/Result/${id}`, {
+        headers: { Authorization: token },
       })
-      .then((res) => {
-        console.log("data deleted");
+      .then(() => {
+        console.log("Data deleted");
         viewData();
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Delete error:", error);
       });
   };
 
@@ -102,105 +86,107 @@ const Resultapi = () => {
   };
 
   const search = () => {
-    //console.log(searchItem);
-
-    let duplicatelist = [...list];
-
-    var st = duplicatelist.filter(
-      (item) => item.name === searchItem || item.sub1 === searchItem || item.sub2 === searchItem || item.sub3 === searchItem
+    const filtered = list.filter(
+      (item) =>
+        item.name === searchItem ||
+        item.sub1 === searchItem ||
+        item.sub2 === searchItem ||
+        item.sub3 === searchItem
     );
+    setList(filtered);
     setSearchItem("");
-    setList(st);
-
-    //console.log(st);
-  };
-  const total = (item) => {
-    var sum = parseInt(item.sub1) + parseInt(item.sub2) + parseInt(item.sub3);
-    return sum;
   };
 
-  const percentage = (item) => {
-    var percentage =
-      (parseInt(item.sub1) + parseInt(item.sub2) + parseInt(item.sub3)) / 3;
-    return percentage;
-  };
-  const min = (sub1, sub2, sub3) => {
-    return Math.min(parseInt(sub1), parseInt(sub2), parseInt(sub3));
-  };
-  const max = (sub1, sub2, sub3) => {
-    return Math.max(parseInt(sub1), parseInt(sub2), parseInt(sub3));
-  };
+  const total = (item) =>
+    parseInt(item.sub1) + parseInt(item.sub2) + parseInt(item.sub3);
+
+  const percentage = (item) =>
+    (
+      (parseInt(item.sub1) + parseInt(item.sub2) + parseInt(item.sub3)) /
+      3
+    ).toFixed(2);
+
+  const min = (s1, s2, s3) =>
+    Math.min(parseInt(s1), parseInt(s2), parseInt(s3));
+
+  const max = (s1, s2, s3) =>
+    Math.max(parseInt(s1), parseInt(s2), parseInt(s3));
+
   return (
     <>
+      <h1>-: Api Result :-</h1>
+
       <Formik enableReinitialize initialValues={ini} onSubmit={handleSubmit}>
         <Form>
-          <Field name="name"></Field>
-          <br />
-          <br />
-          <Field name="sub1"></Field>
-          <br />
-          <br />
-          <Field name="sub2"></Field>
-          <br />
-          <br />
-          <Field name="sub3"></Field>
-          <br />
-          <br />
+          <div>
+            <label>Name:</label>
+            <Field name="name" type="text" required />
+          </div>
+          <div>
+            <label>Subject 1:</label>
+            <Field name="sub1" type="number" required />
+          </div>
+          <div>
+            <label>Subject 2:</label>
+            <Field name="sub2" type="number" required />
+          </div>
+          <div>
+            <label>Subject 3:</label>
+            <Field name="sub3" type="number" required />
+          </div>
           <button type="submit">Submit</button>
-          <br />
-          <br />
         </Form>
       </Formik>
 
+      <br />
       <input
         type="text"
-        name=""
-        id=""
         placeholder="Enter filter item"
         value={searchItem}
         onChange={(e) => setSearchItem(e.target.value)}
       />
-      <button type="submit" onClick={search}>
-        Search
-      </button>
+      <button onClick={search}>Search</button>
+
       <br />
       <br />
 
       <table border={1}>
-        <tr>
-          <td>No</td>
-          <td>Name</td>
-          <td>Sub1</td>
-          <td>Sub2</td>
-          <td>Sub3</td>
-          <td>total</td>
-          <td>Percentage</td>
-          <td>Min</td>
-          <td>Max</td>
-          <td>Delete</td>
-          <td>Edit</td>
-
-        </tr>
-
-        {list.map((item, index) => (
+        <thead>
           <tr>
-            <td>{index + 1}</td>
-            <td>{item.name}</td>
-            <td>{item.sub1}</td>
-            <td>{item.sub2}</td>
-            <td>{item.sub3}</td>
-            <td>{total(item)}</td>
-            <td>{percentage(item)}%</td>
-            <td>{min(item.sub1, item.sub2, item.sub3)}</td>
-            <td>{max(item.sub1, item.sub2, item.sub3)}</td>
-            <td>
-              <button onClick={() => deleteData(item._id)}>Delete</button>
-            </td>
-            <td>
-              <button onClick={() => editData(item)}>Edit</button>
-            </td>
+            <th>No</th>
+            <th>Name</th>
+            <th>Sub1</th>
+            <th>Sub2</th>
+            <th>Sub3</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Delete</th>
+            <th>Edit</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {list.map((item, index) => (
+            <tr key={item._id}>
+              <td>{index + 1}</td>
+              <td>{item.name}</td>
+              <td>{item.sub1}</td>
+              <td>{item.sub2}</td>
+              <td>{item.sub3}</td>
+              <td>{total(item)}</td>
+              <td>{percentage(item)}%</td>
+              <td>{min(item.sub1, item.sub2, item.sub3)}</td>
+              <td>{max(item.sub1, item.sub2, item.sub3)}</td>
+              <td>
+                <button onClick={() => deleteData(item._id)}>Delete</button>
+              </td>
+              <td>
+                <button onClick={() => editData(item)}>Edit</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </>
   );

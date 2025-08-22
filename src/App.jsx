@@ -11,14 +11,16 @@ import "./App.css";
 // import Api from "./pages/Api";
 // import Rickandmortyapi from "./pages/Rickandmortyapi";
 // import Apipostman from "./pages/Apipostman";
-// import Resultapi from "./pages/Resultapi";
+// import Resultapi from "./pages/Api/Resultapi";
 // import Crudapipractice from "./pages/Crudapipractice";
 // import Useref from "./pages/Hooks/Useref";
 //  import Usememo from "./pages/Hooks/Usememo";
 //import Usecallback from "./pages/Hooks/Usecallback";
 // import Usecontext from "./pages/Hooks/Usecontext";
 // import Usecontexttask1 from "./pages/Hooks/Usecontexttask1";
-import Usecontexttask2 from "./pages/Hooks/Usecontexttask2";
+//import Usecontexttask2 from "./pages/Hooks/Usecontexttask2";
+// import Taskbuttonui from "./pages/Redux/Taskbuttonui";
+import ButtonUI from "./pages/Redux/Reduxtask/ButtonUI";
 
 
 function App() {
@@ -43,7 +45,9 @@ function App() {
       {/* <Usecallback></Usecallback> */}
       {/* <Usecontext></Usecontext> */}
       {/* <Usecontexttask1></Usecontexttask1> */}
-      <Usecontexttask2></Usecontexttask2>
+      {/* <Usecontexttask2></Usecontexttask2> */}
+      {/* <Taskbuttonui></Taskbuttonui> */}
+      <ButtonUI></ButtonUI>
     </>
   );
 }
