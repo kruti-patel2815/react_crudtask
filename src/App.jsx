@@ -20,8 +20,8 @@ import "./App.css";
 // import Usecontexttask1 from "./pages/Hooks/Usecontexttask1";
 //import Usecontexttask2 from "./pages/Hooks/Usecontexttask2";
 // import Taskbuttonui from "./pages/Redux/Taskbuttonui";
-import ButtonUI from "./pages/Redux/Reduxtask/ButtonUI";
-
+// import ButtonUI from "./pages/Redux/Reduxtask/ButtonUI";
+import Buttoncrud from "./pages/Redux/Reduxtask/Buttoncrud";
 
 function App() {
   return (
@@ -47,7 +47,8 @@ function App() {
       {/* <Usecontexttask1></Usecontexttask1> */}
       {/* <Usecontexttask2></Usecontexttask2> */}
       {/* <Taskbuttonui></Taskbuttonui> */}
-      <ButtonUI></ButtonUI>
+      {/* <ButtonUI></ButtonUI> */}
+      <Buttoncrud></Buttoncrud>
     </>
   );
 }
