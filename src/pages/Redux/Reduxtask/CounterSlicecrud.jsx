@@ -1,23 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const CounterSlicecrud = createSlice({
+const CounterSlicecrud = createSlice({
   name: "crud",
   initialState: {
-    list: [], 
+    list: [],
+    editIndex: null,
   },
   reducers: {
-    addRecord: (state, action) => {
+    addItem: (state, action) => {
       state.list.push(action.payload);
     },
-    updateRecord: (state, action) => {
-      const { index, newData } = action.payload;
-      state.list[index] = newData;
+    deleteItem: (state, action) => {
+      state.list = state.list.filter((_, i) => i !== action.payload);
     },
-    deleteRecord: (state, action) => {
-      state.list.splice(action.payload, 1);
+    setEditIndex: (state, action) => {
+      state.editIndex = action.payload;
+    },
+    updateItem: (state, action) => {
+      const { index, newData } = action.payload;
+      if (state.list[index]) {
+        state.list[index] = newData;
+      }
+      state.editIndex = null;
     },
   },
 });
 
-export const { addRecord, updateRecord, deleteRecord } =  CounterSlicecrud.actions;
+export const { addItem, deleteItem, setEditIndex, updateItem } = CounterSlicecrud.actions;
 export default CounterSlicecrud.reducer;

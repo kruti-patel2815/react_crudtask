@@ -1,84 +1,79 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addRecord, updateRecord, deleteRecord } from "./CounterSlicecrud";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
+import {
+  addItem,
+  deleteItem,
+  setEditIndex,
+  updateItem,
+} from "./CounterSlicecrud";
 
 const Buttoncrud = () => {
+  const { list, editIndex } = useSelector((state) => state.crud);
   const dispatch = useDispatch();
-  const { list } = useSelector((state) => state.crud);
 
-  const [editIndex, setEditIndex] = useState(null);
+  let ini;
+
+  if (editIndex !== null) {
+    ini = list[editIndex];
+  } else {
+    ini = { name: "", surname: "", mobileno: "" };
+  }
 
   return (
     <div>
       <Formik
         enableReinitialize
-        initialValues={
-          editIndex !== null
-            ? list[editIndex]
-            : { Name: "", Surname: "", Mobileno: "" }
-        }
+        initialValues={ini}
         onSubmit={(values, { resetForm }) => {
           if (editIndex !== null) {
-            dispatch(updateRecord({ index: editIndex, newData: values }));
-            setEditIndex(null);
+            dispatch(updateItem({ index: editIndex, newData: values }));
           } else {
-            dispatch(addRecord(values));
+            dispatch(addItem(values));
           }
           resetForm();
         }}
       >
-        {() => (
-          <Form>
-            <h4>
-              Name:
-              <Field type="text" name="Name" placeholder="Enter Name" />
-            </h4>
-
-            <h4>
-              Surname:
-              <Field type="text" name="Surname" placeholder="Enter Surname" />
-            </h4>
-
-            <h4>
-              Mobile-no:
-              <Field type="number" name="Mobileno" placeholder="Enter Mobile" />
-            </h4>
-
-            <button type="submit">Submit</button>
-            <br/>
-            <br/>
-          </Form>
-        )}
+        <Form>
+          <Field name="name" placeholder="Name" />
+          <br />
+          <br />
+          <Field name="surname" placeholder="Surname" />
+          <br />
+          <br />
+          <Field name="mobileno" placeholder="Mobile No" />
+          <br />
+          <br />
+          <button type="submit">Submit</button>
+        </Form>
       </Formik>
 
       <table border="1">
-        <thead>
-          <tr>
-            <td>Name</td>
-            <td>Surname</td>
-            <td>Mobile-no</td>
-            <td>Delete</td>
-            <td>Edit</td>
+        <tr>
+          <td>Name</td>
+          <td>Surname</td>
+          <td>Mobileno</td>
+          <td>Delete</td>
+          <td>Edit</td>
+        </tr>
+
+        {list.map((item, index) => (
+          <tr key={index}>
+            <td>{item.name}</td>
+            <td>{item.surname}</td>
+            <td>{item.mobileno}</td>
+            <td>
+              <button onClick={() => dispatch(deleteItem(index))}>
+                Delete
+              </button>
+            </td>
+            <td>
+              <button onClick={() => dispatch(setEditIndex(index))}>
+                Edit
+              </button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {list.map((item, index) => (
-            <tr key={index}>
-              <td>{item.Name}</td>
-              <td>{item.Surname}</td>
-              <td>{item.Mobileno}</td>
-              <td>
-                <button onClick={() => dispatch(deleteRecord(index))}>
-                  Delete
-                </button>
-              </td>
-              <td>
-                <button onClick={() => setEditIndex(index)}>Edit</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        ))}
       </table>
     </div>
   );
