@@ -21,7 +21,7 @@ const Apipostman = () => {
 
   function viewData() {
     axios
-      .get("https://generateapi.onrender.com/api/product", {
+      .get("https://generateapi.techsnack.online/api/product", {
         headers: {
           Authorization: token,
         },
@@ -39,7 +39,7 @@ const Apipostman = () => {
     const { _id, ...rest } = values;
     if (editId != null) {
       axios
-        .patch(`https://generateapi.onrender.com/api/product/${editId}`, rest, {
+        .patch(`https://generateapi.techsnack.online/api/product/${editId}`, rest, {
           headers: {
             Authorization: token,
           },
@@ -56,7 +56,7 @@ const Apipostman = () => {
         });
     } else {
       axios
-        .post(" https://generateapi.onrender.com/api/product", values, {
+        .post("https://generateapi.techsnack.online/api/product", values, {
           headers: {
             Authorization: token,
           },
@@ -73,7 +73,7 @@ const Apipostman = () => {
 
   const deleteData = (id) => {
     axios
-      .delete(`https://generateapi.onrender.com/api/product/${id}`, {
+      .delete(`https://generateapi.techsnack.online/api/product/${id}`, {
         headers: {
           Authorization: token,
         },

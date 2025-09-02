@@ -10,7 +10,7 @@ import "./App.css";
 // import Formiktag from "./pages/Formiktag";
 // import Api from "./pages/Api";
 // import Rickandmortyapi from "./pages/Rickandmortyapi";
-// import Apipostman from "./pages/Apipostman";
+  // import Apipostman from "./pages/Api/Apipostman";
 // import Resultapi from "./pages/Api/Resultapi";
 // import Crudapipractice from "./pages/Crudapipractice";
 // import Useref from "./pages/Hooks/Useref";
@@ -21,7 +21,10 @@ import "./App.css";
 //import Usecontexttask2 from "./pages/Hooks/Usecontexttask2";
 // import Taskbuttonui from "./pages/Redux/Taskbuttonui";
 // import ButtonUI from "./pages/Redux/Reduxtask/ButtonUI";
-import Buttoncrud from "./pages/Redux/Reduxtask/Buttoncrud";
+// import Buttoncrud from "./pages/Redux/Reduxtask/Buttoncrud";
+// import ImageUpload from "./pages/ImageUpload";
+// import Crudapi3 from "./pages/Api/Crudapi3";
+import Apiexam from "./pages/Api/Apiexam";
 
 function App() {
   return (
@@ -48,7 +51,10 @@ function App() {
       {/* <Usecontexttask2></Usecontexttask2> */}
       {/* <Taskbuttonui></Taskbuttonui> */}
       {/* <ButtonUI></ButtonUI> */}
-      <Buttoncrud></Buttoncrud>
+      {/* <Buttoncrud></Buttoncrud> */}
+      {/* <ImageUpload></ImageUpload> */}
+      {/* <Crudapi3></Crudapi3> */}
+      <Apiexam></Apiexam>
     </>
   );
 }

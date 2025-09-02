@@ -100,7 +100,7 @@ const Crudapipractice = () => {
   };
 
   const search = () => {
-    //console.log(searchItem);
+
 
     let duplicatelist = [...list];
 
@@ -110,7 +110,7 @@ const Crudapipractice = () => {
     setSearchItem("");
     setList(st);
 
-    //console.log(st);
+  
   };
 
   return (
